@@ -1,0 +1,29 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "This is a test.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "svstart": "supervisor --harmony index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weihw/myBlog.git"
+  },
+  "author": "Wei Hanwei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weihw/myBlog/issues"
+  },
+  "homepage": "https://github.com/weihw/myBlog#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "bluebird": "^3.4.7",
+    "ejs": "^2.5.5",
+    "express": "^4.14.1",
+    "express-formidable": "^1.0.0",
+    "mongoose": "^4.8.1"
+  }
+}

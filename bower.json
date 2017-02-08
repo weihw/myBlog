@@ -1,0 +1,21 @@
+{
+  "name": "blog",
+  "description": "This is a test.",
+  "main": "index.js",
+  "authors": [
+    "Wei Hanwei"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/weihw/myBlog",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
