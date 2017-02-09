@@ -1,6 +1,7 @@
 /**
  * Created by weihanwei on 2/8/17.
  */
+var pkg = require('./package');
 var config = require('config-lite');
 var path = require('path');
 var express = require('express');
@@ -14,7 +15,7 @@ app.set('view engine', 'ejs');
 
 // app.locals
 app.locals.blog = {
-  title: "DC Blog",
+  title: pkg.name,
   menus: [
     {
       name: "Home",
