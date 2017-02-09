@@ -10,6 +10,11 @@ var routes = require('./routes');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// app.locals
+app.locals.blog = {
+  title: "DC Blog"
+};
+
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -3,6 +3,9 @@
  */
 module.exports = function (app) {
   app.get('/', function (req, res) {
-    res.render('index', {title: 'Hello World'});
+    res.render('index');
   });
+
+  app.use('/signin', require('./signin'));
+  app.use('/signup', require('./signup'));
 };
