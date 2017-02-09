@@ -1,13 +1,14 @@
 /**
  * Created by weihanwei on 2/8/17.
  */
-var pkg = require('./package');
-var config = require('config-lite');
-var path = require('path');
-var express = require('express');
-var formidable = require('express-formidable');
-var app = express();
-var routes = require('./routes');
+'use strict'
+let pkg = require('./package');
+let config = require('config-lite');
+let path = require('path');
+let express = require('express');
+let formidable = require('express-formidable');
+let app = express();
+let routes = require('./routes');
 
 // set view engine and path
 app.set('views', path.join(__dirname, 'views'));
