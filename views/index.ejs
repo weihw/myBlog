@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title><%= title %></title>
-  <link rel="stylesheet" href="/public/libs/bootstrap/dist/css/bootstrap.min.css">
-  <script type="application/javascript" src="/public/libs/jquery/dist/jquery.min.js"></script>
-  <script type="application/javascript" src="/public/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-</head>
-<body>
-  <div class="container">
-    <h1><%= title %></h1>
-    <p>Hello Express</p>
-  </div>
-</body>
-</html>
+<%- include('./components/header') %>
+<h1><%= title %></h1>
+<p>Hello Express</p>
+<%- include('./components/footer') %>
