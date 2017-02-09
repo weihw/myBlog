@@ -7,6 +7,7 @@ This project is just for learning `node.js` `express` `mongodb`.
 - `express-formidable`
 - `mongoose`
 - `bluebird`
+- `config-lite`
 
 ## scripts
 - `start` : start server.

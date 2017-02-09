@@ -1,4 +1,15 @@
-node_modules/
+# webstorm config
 .idea/
+
+# npm packages
+node_modules/
+
+# bower packages
 public/libs/
+
+# npm debug log
 npm-debug.log
+
+# config files
+config/*
+!config/default.*
