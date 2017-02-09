@@ -6,13 +6,13 @@ let express = require('express');
 let router = express.Router();
 
 router.get('/', function (req, res) {
-  res.render('signin');
+  res.render('signup');
 });
 
 router.post('/', function (req, res) {
-  console.log(`------------signin post request------------`);
+  console.log(`------------signup post request------------`);
   console.log(req.fields);
-  console.log(`------------signin post request------------`);
+  console.log(`------------signup post request------------`);
   res.send({success: 1});
 });
 

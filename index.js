@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var express = require('express');
+var formidable = require('express-formidable');
 var app = express();
 var routes = require('./routes');
 
@@ -17,6 +18,9 @@ app.locals.blog = {
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+// parsing form data
+app.use(formidable());
 
 // route
 routes(app);
