@@ -13,7 +13,13 @@ app.set('view engine', 'ejs');
 
 // app.locals
 app.locals.blog = {
-  title: "DC Blog"
+  title: "DC Blog",
+  menus: [
+    {
+      name: "Home",
+      link: "/"
+    }
+  ]
 };
 
 // static files
