@@ -6,8 +6,9 @@ let config = require('config-lite');
 let mongoose = require('mongoose');
 let bluebird = require('bluebird');
 let Schema = mongoose.Schema;
-mongoose.promise = bluebird;
+mongoose.Promise = global.Promise = bluebird;
 mongoose.connect(config.mongodb);
+
 let UserSchema = new Schema({
   username: {type: String, unique: true, required: true, index: true},
   password: {type: String, required: true},
