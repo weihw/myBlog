@@ -10,8 +10,8 @@ mongoose.Promise = global.Promise = bluebird;
 mongoose.connect(config.mongodb);
 
 let UserSchema = new Schema({
-  username: {type: String, unique: true, required: true, index: true},
-  password: {type: String, required: true},
+  username: {type: String},
+  password: {type: String},
   imgURL: {type: String, default: '/img/default.jpg'},
   gender: {type: String, enum: ['male', 'famale', 'unknown']},
   bio: {type: String}

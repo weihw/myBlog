@@ -17,6 +17,7 @@ router.post('/', function (req, res) {
     gender: req.fields.sex,
     bio: req.fields.summary
   };
+  console.log(user);
   User.create(user)
     .then(function (result) {
       console.log(result);
