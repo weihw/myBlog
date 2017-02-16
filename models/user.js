@@ -6,7 +6,7 @@ var UserModel = require('../libs/mongodb').User;
 
 module.exports = {
   create: function(user){
-    return new UserModel(user).save().exec();
+    return new UserModel(user).save();
   },
   findByUsername: function (username) {
     return UserModel.findOne({username: username}).exec();
