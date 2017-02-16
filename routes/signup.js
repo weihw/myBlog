@@ -30,7 +30,6 @@ router.post('/', function (req, res) {
 
 // 注册时检查用户名是否存在
 router.get('/:username', function(req, res) {
-  console.log(req.params.username);
   User.findByUsername(req.params.username).then(function(user){
     if(!user) {
       res.send({success: 1});

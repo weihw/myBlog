@@ -4,17 +4,11 @@
 $(function () {
   $('#submit').click(function (event){
     event.preventDefault();
-    var formdata = new FormData($('#infoForm')[0]);
-    $.ajax({
-      url: '/signin',
-      type: 'post',
-      data: formdata,
-      processData: false,
-      contentType: false,
-      dataType: 'text',
-      success: function (str){
-        console.log(str);
+    $('#infoForm').serializeArray();
+    $.post('/signin', $('#infoForm').serializeArray(), function (data){
+      if(data.success != 1) {
+        Dialogs.showWarn(data.msg);
       }
-    })
+    }, "json");
   })
 });
