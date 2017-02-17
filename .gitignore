@@ -7,6 +7,9 @@ node_modules/
 # bower packages
 public/libs/
 
+# img upload dir
+public/img/
+
 # npm debug log
 npm-debug.log
 

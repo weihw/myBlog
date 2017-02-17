@@ -29,7 +29,10 @@ app.locals.blog = {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // parsing form data
-app.use(formidable());
+app.use(formidable({
+  uploadDir: path.join(__dirname, 'public/img'),
+  keepExtensions: true
+}));
 
 // route
 routes(app);
