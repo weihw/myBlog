@@ -1,5 +1,5 @@
 /**
- * Created by weihanwei on 2/8/17.
+ * Created by weihanwei on 2017/2/17.
  */
 Dialogs = {
   showWarn: function(msg, title){
