@@ -26,6 +26,7 @@ router.post('/', function (req, res) {
     } else if (user.password !== req.fields.password) {
       res.send({success: 0, msg: '密码错误'});
     } else {
+      req.session.user = user;
       res.send({success: 1});
     }
   }).catch(function (err) {

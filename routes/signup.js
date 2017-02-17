@@ -13,7 +13,6 @@ router.get('/', function (req, res) {
 });
 // 用户注册数据提交
 router.post('/', function (req, res) {
-  console.log(req.files.file.path.split(path.sep).pop());
   let user = {
     username: req.fields.username,
     password: req.fields.password,
@@ -22,7 +21,8 @@ router.post('/', function (req, res) {
     imgURL: req.files.file.path.split(path.sep).pop()
   };
   User.create(user)
-    .then(function (result) {
+    .then(function (user) {
+      req.session.user = user;
       res.send({success: 1});
     })
     .catch(function (err) {
