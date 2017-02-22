@@ -1,7 +1,8 @@
 /**
+ * 数据库连接和数据库模型定义
  * Created by weihanwei on 2017/2/9.
  */
-'use strict'
+'use strict';
 let config = require('config-lite');
 let mongoose = require('mongoose');
 let bluebird = require('bluebird');

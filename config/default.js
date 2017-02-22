@@ -1,4 +1,5 @@
 /**
+ * 默认配置信息
  * Created by weihanwei on 2017/2/9.
  */
 'use strict'
