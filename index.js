@@ -12,6 +12,9 @@ let routes = require('./routes');
 let session = require('express-session');
 let MongoStore = require('connect-mongo')(session);
 let flash = require('connect-flash');
+let favicon = require('serve-favicon');
+
+app.use(favicon(join(__dirname, 'public/favicon.ico')));
 
 // set view engine and path
 app.set('views', join(__dirname, 'views'));
