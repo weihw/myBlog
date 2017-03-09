@@ -1,18 +1,25 @@
-<ul class="nav navbar-nav navbar-right">
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-      <span class="glyphicon glyphicon-th-list"></span>
-    </a>
-    <ul class="dropdown-menu">
-      <% if (user) { %>
-      <li><a href="/posts?author=<%= user._id %>">个人主页</a></li>
-      <li role="separator" class="divider"></li>
-      <li><a href="/posts/create">发表文章</a></li>
-      <li><a href="/signout">登出</a></li>
-      <% } else { %>
-      <li><a href="/signin">登录</a></li>
-      <li> <a href="/signup">注册</a></li>
-      <% } %>
-    </ul>
-  </li>
-</ul>
+<li class="dropdown hidden-xs">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    <span class="glyphicon glyphicon-th-list"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <% if (user) { %>
+    <li><a href="/posts?author=<%= user._id %>">个人主页</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/posts/create">发表文章</a></li>
+    <li><a href="/signout">登出</a></li>
+    <% } else { %>
+    <li><a href="/signin">登录</a></li>
+    <li> <a href="/signup">注册</a></li>
+    <% } %>
+  </ul>
+</li>
+<% if (user) { %>
+<li class="hidden-lg hidden-md hidden-sm"><a href="/posts?author=<%= user._id %>">个人主页</a></li>
+<li class="hidden-lg hidden-md hidden-sm" role="separator" class="divider"></li>
+<li class="hidden-lg hidden-md hidden-sm"><a href="/posts/create">发表文章</a></li>
+<li class="hidden-lg hidden-md hidden-sm"><a href="/signout">登出</a></li>
+<% } else { %>
+<li class="hidden-lg hidden-md hidden-sm"><a href="/signin">登录</a></li>
+<li class="hidden-lg hidden-md hidden-sm"><a href="/signup">注册</a></li>
+<% } %>
