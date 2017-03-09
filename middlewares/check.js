@@ -4,14 +4,14 @@
  */
 'use strict';
 module.exports = {
-  checkLogin: function (req, res, next) {
-    if(!req.session.user) {
-      res.send({success: 0, msg: '请先登录。'});
-      return
-    }
-    next();
+  checkLogin: (req, res, next) => {
+      if(!req.session.user) {
+        res.send({success: 0, msg: '请先登录。'});
+        return
+      }
+      next();
   },
-  checkNotLogin: function (req, res, next) {
+  checkNotLogin: (req, res, next) => {
     if(req.session.user) {
       res.send({success: 0, msg: '已登录'});
       return

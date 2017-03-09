@@ -5,16 +5,16 @@
 let express = require('express');
 let router = express.Router();
 let User = require('../models/user');
-let checkNotLogin = require('../middlewares/check').checkNotLogin;
+let {checkNotLogin} = require('../middlewares/check');
 
 // 请求登录页
-router.get('/', checkNotLogin, function (req, res) {
+router.get('/', checkNotLogin, (req, res) => {
   res.render('signin');
 });
 
 // 登录验证
-router.post('/', checkNotLogin, function (req, res) {
-  User.findByUsername(req.fields.username).then(function (user) {
+router.post('/', checkNotLogin, (req, res) => {
+  User.findByUsername(req.fields.username).then(user => {
     if (!user) {
       res.send({success: 0, msg: '用户名不存在。'});
     } else if (user.password !== req.fields.password) {
@@ -23,7 +23,7 @@ router.post('/', checkNotLogin, function (req, res) {
       req.session.user = user;
       res.send({success: 1});
     }
-  }).catch(function (err) {
+  }).catch(err => {
     res.send({success: 0, msg: "系统异常，请重试。"});
   });
 });

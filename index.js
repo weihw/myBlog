@@ -1,10 +1,10 @@
 /**
  * Created by weihanwei on 2/8/17.
  */
-'use strict'
+'use strict';
 let pkg = require('./package');
 let config = require('config-lite');
-let path = require('path');
+let {join} = require('path');
 let express = require('express');
 let formidable = require('express-formidable');
 let app = express();
@@ -14,11 +14,11 @@ let MongoStore = require('connect-mongo')(session);
 let flash = require('connect-flash');
 
 // set view engine and path
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(join(__dirname, 'public')));
 
 // session中间件
 app.use(session({
@@ -34,7 +34,7 @@ app.use(session({
 
 // parsing form data
 app.use(formidable({
-  uploadDir: path.join(__dirname, 'public/img'),
+  uploadDir: join(__dirname, 'public/img'),
   keepExtensions: true
 }));
 
@@ -49,7 +49,7 @@ app.locals.blog = {
   ]
 };
 
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   res.locals.user = req.session.user;
   next();
 });

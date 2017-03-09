@@ -1,10 +1,10 @@
 /**
  * Created by weihanwei on 2017/2/6.
  */
-function checkUserData () {
+function checkUserData() {
   let data = $('#infoForm').serializeArray();
   let result = {};
-  data.forEach(function(item) {
+  data.forEach(function (item) {
     result[item.name] = item.value;
   });
   result.imgURL = $('#file').val();
@@ -14,7 +14,7 @@ function checkUserData () {
     return Dialogs.showWarn("请填写用户名。");
   }
   if (isS(Validate.text(result.password, 16))) {
-    return Dialogs.showWarn("密码长度应为16位以内。")
+    return Dialogs.showWarn("密码长度应为16位以内。");
   }
   if (result.password !== result.repassword) {
     return Dialogs.showWarn("密码不一致。");
@@ -28,32 +28,32 @@ function checkUserData () {
   return true;
 }
 
-$(function(){
-  $('#username').change(function(){
+$(function () {
+  $('#username').change(function () {
     let val = $(this).val();
     let result = Validate.text(val, 16);
-    if(isS(result)) {
-     $(this).val(result);
-     return
+    if (isS(result)) {
+      $(this).val(result);
+      return
     }
-    $.getJSON("/signup/" + val, function(data){
-      if(data.success != 1) {
+    $.getJSON("/signup/" + val, function (data) {
+      if (data.success != 1) {
         Dialogs.showWarn(data.msg);
       }
     })
   });
-  $('#submit').click(function(event){
+  $('#submit').click(function (event) {
     event.preventDefault();
-    if(!checkUserData()) return;
-    var formdata = new FormData($('#infoForm')[0]);
+    if (!checkUserData()) return;
+    let formdata = new FormData($('#infoForm')[0]);
     $.ajax({
       url: '/signup',
       type: 'post',
       data: formdata,
-      processData : false,
-      contentType : false,
+      processData: false,
+      contentType: false,
       dataType: 'text',
-      success: function(str){
+      success: function (str) {
         console.log(str);
       }
     });
