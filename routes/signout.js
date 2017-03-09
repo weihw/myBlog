@@ -9,7 +9,7 @@ let {checkLogin} = require('../middlewares/check');
 
 router.get('/', checkLogin, (req, res) => {
   req.session.user = null;
-  res.send({success: 1});
+  res.redirect('/');
 });
 
 module.exports = router;

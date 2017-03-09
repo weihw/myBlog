@@ -6,14 +6,14 @@
 module.exports = {
   checkLogin: (req, res, next) => {
       if(!req.session.user) {
-        res.send({success: 0, msg: '请先登录。'});
+        res.redirect('/signin');
         return
       }
       next();
   },
   checkNotLogin: (req, res, next) => {
     if(req.session.user) {
-      res.send({success: 0, msg: '已登录'});
+      res.redirect('/');
       return
     }
     next();

@@ -8,6 +8,8 @@ $(function () {
     $.post('/signin', $('#infoForm').serializeArray(), data => {
       if (data.success != 1) {
         Dialogs.showWarn(data.msg);
+      } else {
+        window.location.href = '/';
       }
     }, "json");
   })
