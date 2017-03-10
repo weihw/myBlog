@@ -16,7 +16,7 @@
 </li>
 <% if (user) { %>
 <li class="hidden-lg hidden-md hidden-sm"><a href="/posts?author=<%= user._id %>">个人主页</a></li>
-<li class="hidden-lg hidden-md hidden-sm" role="separator" class="divider"></li>
+<li class="divider hidden-lg hidden-md hidden-sm" role="separator"></li>
 <li class="hidden-lg hidden-md hidden-sm"><a href="/posts/create">发表文章</a></li>
 <li class="hidden-lg hidden-md hidden-sm"><a href="/signout">登出</a></li>
 <% } else { %>
