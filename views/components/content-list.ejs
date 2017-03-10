@@ -1,0 +1,8 @@
+<ul class="list-unstyled">
+  <% list.forEach(item => { %>
+  <li>
+    <a href="<% item.username %>"><img src="<% item.imgURL %>" alt="" class="img-circle"></a>
+    <span><% item.title %></span>
+  </li>
+  <% }) %>
+</ul>

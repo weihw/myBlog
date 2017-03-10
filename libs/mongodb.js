@@ -9,7 +9,9 @@ let bluebird = require('bluebird');
 let Schema = mongoose.Schema;
 mongoose.Promise = global.Promise = bluebird;
 mongoose.connect(config.mongodb);
-
+/**
+ * User
+ */
 let UserSchema = new Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String},
@@ -17,5 +19,17 @@ let UserSchema = new Schema({
   gender: {type: String, enum: ['male', 'famale', 'unknown']},
   bio: {type: String}
 });
-// User Model
-module.exports.User = mongoose.model('User', UserSchema);
+
+exports.User = mongoose.model('User', UserSchema);
+
+/**
+ * Posts
+ */
+let PostSchema = new Schema({
+  auther: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  title: {type: String, required: true},
+  content: {type: String},
+  pv: {type: Number}
+});
+
+exports.Post = mongoose.model('Post', PostSchema);
