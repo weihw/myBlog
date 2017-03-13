@@ -1,0 +1,15 @@
+<%- include('./components/header') %>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="topic-title">
+      <h3><%= topic.title %></h3>
+      <small>作者：<%= topic.author.username %></small>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <pre class="topic-content"><%- topic.content %></pre>
+  </div>
+</div>
+<%- include('./components/footer') %>

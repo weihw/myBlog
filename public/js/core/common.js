@@ -5,6 +5,7 @@ $(function () {
   // 登录
   $('#signinModal #signin').click(function (event) {
     event.preventDefault();
+    event.stopPropagation();
     $.post('/signin', $('#signinModal #infoForm').serializeArray(), data => {
       if (data.success != 1) {
         // $('#signinModal').modal('hide');
@@ -30,6 +31,7 @@ $(function () {
   });
   $('#signupModal #signup').click(function (event) {
     event.preventDefault();
+    event.stopPropagation();
     let checkUserData = function () {
       let data = $('#signupModal #infoForm').serializeArray();
       let result = {};
@@ -37,8 +39,6 @@ $(function () {
         result[item.name] = item.value;
       });
       result.imgURL = $('#signupModal #file').val();
-      console.log(result);
-
       if (!isS(result.username) || result.username.length <= 0) {
         return Dialogs.showWarn("请填写用户名。");
       }
@@ -64,7 +64,7 @@ $(function () {
       data: formdata,
       processData: false,
       contentType: false,
-      dataType: 'text',
+      dataType: 'json',
       success: function (data) {
         if (data.success != 1) {
           Dialogs.showWarn(data.msg);
@@ -74,14 +74,41 @@ $(function () {
       }
     });
   });
-
+  // 发表文章
+  $('#createModal #create').click(function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    let data = $('#createModal #infoForm').serializeArray();
+    let result = {};
+    data.forEach(function (item) {
+      result[item.name] = item.value;
+    });
+    if(!isS(result.title) || result.title.length <= 0) {
+      return Dialogs.showWarn("请填标题。");
+    }
+    if(!isS(result.content) || result.content.length <= 0) {
+      return Dialogs.showWarn("请填文章内容。");
+    }
+    $.post('/posts/create', result,function (data) {
+      if (data.success != 1) {
+        Dialogs.showWarn(data.msg);
+      } else {
+        window.location.href = '/';
+      }
+    });
+  });
+  // 通用模态框关闭
   $('.modal .modalClose').click(function (event) {
     event.preventDefault();
     event.stopPropagation();
     let $modal = $(this).closest('.modal');
-    let $inputs = $(this).closest('.modal').find('input');
-    for (let i = 0, len = $inputs.length; i < len; i++) {
-      $inputs[i].value = '';
+    let inputs = $(this).closest('.modal').find('input');
+    let textarea = $(this).closest('.modal').find('textarea');
+    if(textarea) {
+      textarea.value = '';
+    }
+    for (let i = 0, len = inputs.length; i < len; i++) {
+      inputs[i].value = '';
     }
     $modal.modal('hide');
   });

@@ -1,8 +1,8 @@
-<ul class="list-unstyled">
-  <% list.forEach(item => { %>
+<ul class="list-unstyled post-list">
+  <% postList.forEach(item => { %>
   <li>
-    <a href="<% item.username %>"><img src="<% item.imgURL %>" alt="" class="img-circle"></a>
-    <span><% item.title %></span>
+    <a href="/posts/username/<%= item.author.username %>"><img src="/img/<%= item.author.imgURL %>" alt="" class="img-circle "></a>
+    <a class="post" href="/posts/one/<%= item._id %>"><%= item.title %></a>
   </li>
   <% }) %>
 </ul>

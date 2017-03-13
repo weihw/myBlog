@@ -10,12 +10,16 @@ let unlink = Promise.promisify(require('fs').unlink);
 
 // 用户注册数据提交
 router.post('/', (req, res) => {
+  let imgUrl = '/img/default.png';
+  if(req.files.file.path.split(path.sep).pop()) {
+    imgUrl = req.files.file.path.split(path.sep).pop();
+  }
   let user = {
     username: req.fields.username,
     password: req.fields.password,
     gender: req.fields.sex,
     bio: req.fields.summary,
-    imgURL: req.files.file.path.split(path.sep).pop()
+    imgURL: imgUrl
   };
   User.create(user)
     .then(user => {
