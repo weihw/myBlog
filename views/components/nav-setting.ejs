@@ -9,8 +9,8 @@
     <li><a href="/posts/create">发表文章</a></li>
     <li><a href="/signout">登出</a></li>
     <% } else { %>
-    <li><a href="/signin">登录</a></li>
-    <li> <a href="/signup">注册</a></li>
+    <li><a href="#" data-toggle="modal" data-target="#signinModal">登录</a></li>
+    <li><a href="#" data-toggle="modal" data-target="#signupModal">注册</a></li>
     <% } %>
   </ul>
 </li>
@@ -20,6 +20,6 @@
 <li class="hidden-lg hidden-md hidden-sm"><a href="/posts/create">发表文章</a></li>
 <li class="hidden-lg hidden-md hidden-sm"><a href="/signout">登出</a></li>
 <% } else { %>
-<li class="hidden-lg hidden-md hidden-sm"><a href="/signin">登录</a></li>
-<li class="hidden-lg hidden-md hidden-sm"><a href="/signup">注册</a></li>
+<li class="hidden-lg hidden-md hidden-sm"><a href="#" data-toggle="modal" data-target="#signinModal">登录</a></li>
+<li class="hidden-lg hidden-md hidden-sm"><a href="#" data-toggle="modal" data-target="#signupModal">注册</a></li>
 <% } %>

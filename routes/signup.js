@@ -7,10 +7,7 @@ let router = express.Router();
 let User = require('../models/user');
 let path = require('path');
 let unlink = Promise.promisify(require('fs').unlink);
-// 用户注册页面请求
-router.get('/', (req, res) => {
-  res.render('signup');
-});
+
 // 用户注册数据提交
 router.post('/', (req, res) => {
   let user = {

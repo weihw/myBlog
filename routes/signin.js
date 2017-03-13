@@ -7,11 +7,6 @@ let router = express.Router();
 let User = require('../models/user');
 let {checkNotLogin} = require('../middlewares/check');
 
-// 请求登录页
-router.get('/', checkNotLogin, (req, res) => {
-  res.render('signin');
-});
-
 // 登录验证
 router.post('/', checkNotLogin, (req, res) => {
   User.findByUsername(req.fields.username).then(user => {
