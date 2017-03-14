@@ -32,35 +32,34 @@ $(function () {
   $('#signupModal #signup').click(function (event) {
     event.preventDefault();
     event.stopPropagation();
-    let checkUserData = function () {
-      let data = $('#signupModal #infoForm').serializeArray();
-      let result = {};
-      data.forEach(function (item) {
-        result[item.name] = item.value;
-      });
-      result.imgURL = $('#signupModal #file').val();
-      if (!isS(result.username) || result.username.length <= 0) {
-        return Dialogs.showWarn("请填写用户名。");
-      }
-      if (isS(Validate.text(result.password, 16))) {
-        return Dialogs.showWarn("密码长度应为16位以内。");
-      }
-      if (result.password !== result.repassword) {
-        return Dialogs.showWarn("密码不一致。");
-      }
-      if (!isS(result.gender)) {
-        return Dialogs.showWarn("请选择性别。");
-      }
-      return true;
-    };
-    if (!checkUserData()) return;
+    let data = $('#signupModal #infoForm').serializeArray();
+    let result = {}, flag = true;
+    data.forEach(function (item) {
+      result[item.name] = item.value;
+    });
+    result.imgURL = $('#signupModal #file').val();
+    if (!isS(result.username) || result.username.length <= 0) {
+      return Dialogs.showWarn("请填写用户名。");
+    }
+    if (isS(Validate.text(result.password, 16))) {
+      return Dialogs.showWarn("密码长度应为16位以内。");
+    }
+    if (result.password !== result.repassword) {
+      return Dialogs.showWarn("密码不一致。");
+    }
+    if (!isS(result.imgURL) || !result.imgURL.length > 0 || !Validate.file(result.imgURL, ['jpg', 'jpeg', 'png'])) {
+      flag = false;
+    }
+    if (!isS(result.gender)) {
+      return Dialogs.showWarn("请选择性别。");
+    }
     let formdata = new FormData($('#signupModal #infoForm')[0]);
     $.ajax({
       url: '/signup',
       type: 'post',
-      data: formdata,
-      processData: false,
-      contentType: false,
+      data: flag ? formdata : data,
+      processData: !flag,
+      contentType: flag ? false : 'application/x-www-form-urlencoded',
       dataType: 'json',
       success: function (data) {
         if (data.success != 1) {
