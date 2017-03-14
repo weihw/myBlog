@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
   let user = {
     username: req.fields.username,
     password: req.fields.password,
-    gender: req.fields.sex,
+    gender: req.fields.gender,
     bio: req.fields.summary
   };
   if (typeof imgUrl !== 'undefined') {

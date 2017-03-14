@@ -48,7 +48,7 @@ $(function () {
       if (result.password !== result.repassword) {
         return Dialogs.showWarn("密码不一致。");
       }
-      if (!isS(result.sex)) {
+      if (!isS(result.gender)) {
         return Dialogs.showWarn("请选择性别。");
       }
       return true;
