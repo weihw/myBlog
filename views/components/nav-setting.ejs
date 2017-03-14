@@ -6,7 +6,7 @@
     <% if (user) { %>
     <li><a href="/posts?author=<%= user._id %>">个人主页</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#" data-toggle="modal" data-target="#createModal">发表文章</a></li>
+    <li><a href="/posts/create">发表文章</a></li>
     <li><a href="/signout">登出</a></li>
     <% } else { %>
     <li><a href="#" data-toggle="modal" data-target="#signinModal">登录</a></li>
@@ -17,7 +17,7 @@
 <% if (user) { %>
 <li class="hidden-lg hidden-md hidden-sm"><a href="/posts?author=<%= user._id %>">个人主页</a></li>
 <li class="divider hidden-lg hidden-md hidden-sm" role="separator"></li>
-<li class="hidden-lg hidden-md hidden-sm"><a href="#" data-toggle="modal" data-target="#createModal">发表文章</a></li>
+<li class="hidden-lg hidden-md hidden-sm"><a href="/posts/create">发表文章</a></li>
 <li class="hidden-lg hidden-md hidden-sm"><a href="/signout">登出</a></li>
 <% } else { %>
 <li class="hidden-lg hidden-md hidden-sm"><a href="#" data-toggle="modal" data-target="#signinModal">登录</a></li>

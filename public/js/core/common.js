@@ -48,9 +48,6 @@ $(function () {
       if (result.password !== result.repassword) {
         return Dialogs.showWarn("密码不一致。");
       }
-      if (!isS(result.imgURL) || !result.imgURL.length > 0 || !Validate.file(result.imgURL, ['jpg', 'jpeg', 'png'])) {
-        return Dialogs.showWarn("请上传图片格式文件。");
-      }
       if (!isS(result.sex)) {
         return Dialogs.showWarn("请选择性别。");
       }
@@ -71,29 +68,6 @@ $(function () {
         } else {
           window.location.href = '/';
         }
-      }
-    });
-  });
-  // 发表文章
-  $('#createModal #create').click(function(event){
-    event.stopPropagation();
-    event.preventDefault();
-    let data = $('#createModal #infoForm').serializeArray();
-    let result = {};
-    data.forEach(function (item) {
-      result[item.name] = item.value;
-    });
-    if(!isS(result.title) || result.title.length <= 0) {
-      return Dialogs.showWarn("请填标题。");
-    }
-    if(!isS(result.content) || result.content.length <= 0) {
-      return Dialogs.showWarn("请填文章内容。");
-    }
-    $.post('/posts/create', result,function (data) {
-      if (data.success != 1) {
-        Dialogs.showWarn(data.msg);
-      } else {
-        window.location.href = '/';
       }
     });
   });

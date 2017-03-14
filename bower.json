@@ -16,6 +16,9 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "marked": "^0.3.6",
+    "ace-builds": "^1.2.6",
+    "font-awesome": "fontawesome#^4.7.0"
   }
 }

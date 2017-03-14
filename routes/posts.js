@@ -15,7 +15,10 @@ router.get('/', function (req, res) {
     res.send({success: 0, msg: "系统异常，请重试。"});
   });
 });
-
+// 发表文章
+router.get('/create', checkLogin, function (req, res) {
+  res.render('create');
+});
 // 发表文章
 router.post('/create', checkLogin, function (req, res) {
   let post = {

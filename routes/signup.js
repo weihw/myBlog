@@ -10,26 +10,34 @@ let unlink = Promise.promisify(require('fs').unlink);
 
 // 用户注册数据提交
 router.post('/', (req, res) => {
-  let imgUrl = '/img/default.png';
-  if(req.files.file.path.split(path.sep).pop()) {
+  let imgUrl;
+  if (req.files.file.path.split(path.sep).pop()) {
     imgUrl = req.files.file.path.split(path.sep).pop();
   }
   let user = {
     username: req.fields.username,
     password: req.fields.password,
     gender: req.fields.sex,
-    bio: req.fields.summary,
-    imgURL: imgUrl
+    bio: req.fields.summary
   };
+  if (typeof imgUrl !== 'undefined') {
+    user.imgURL = imgUrl;
+  }
   User.create(user)
     .then(user => {
       req.session.user = user;
       res.send({success: 1});
     })
     .catch(err => {
-      unlink(req.files.file.path).then(function () {
-        res.send({success: 0, msg: '注册失败，请重试。'});
-      });
+      console.log(err);
+      unlink(req.files.file.path)
+        .then(function () {
+          res.send({success: 0, msg: '注册失败，请重试。'});
+        })
+        .catch(err => {
+          console.log(err);
+          res.send({success: 0, msg: '注册失败，请重试。'});
+        });
     });
 });
 

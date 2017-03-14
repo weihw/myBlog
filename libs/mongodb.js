@@ -16,7 +16,7 @@ mongoose.connect(config.mongodb);
 let UserSchema = new Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String},
-  imgURL: {type: String, default: '/img/default.jpg'},
+  imgURL: {type: String, default: '/img/default.png'},
   gender: {type: String, enum: ['male', 'famale', 'unknown']},
   bio: {type: String}
 });
