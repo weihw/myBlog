@@ -3,6 +3,7 @@
   <li>
     <a href="/posts/username/<%= item.author.username %>"><img src="/img/<%= item.author.imgURL %>" alt="" class="img-circle "></a>
     <a class="post" href="/posts/one/<%= item._id %>"><%= item.title %></a>
+    <span class="pull-right"><%= item.createAt %></span>
   </li>
   <% }) %>
 </ul>

@@ -6,7 +6,8 @@
 let config = require('config-lite');
 let mongoose = require('mongoose');
 let bluebird = require('bluebird');
-let marked = require('marked');
+// let moment = require('moment');
+// let marked = require('marked');
 let Schema = mongoose.Schema;
 mongoose.Promise = global.Promise = bluebird;
 mongoose.connect(config.mongodb);
@@ -30,14 +31,19 @@ let PostSchema = new Schema({
   author: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   title: {type: String, required: true},
   content: {type: String},
-  pv: {type: Number}
+  pv: {type: Number},
+  createAt: {type: Date, default: new Date()}
 });
 
-// 将 post 的 content 从 markdown 转换成 html
-PostSchema.post('findOne', post => {
-  if (post) {
-    post.content = marked(post.content);
-  }
-  return post;
-});
+// 将schema的 createAt 从 Date() 转换成 YYYY-MM-DD
+// PostSchema.post('findOne', post => {
+//   if (post) {
+//     let temp = moment(post.createAt);
+//     temp = temp.format('YYYY-MM-DD');
+//     // post.content = marked(post.content);
+//     console.log(`Schema: ${temp}`);
+//     post.createAt = temp;
+//   }
+//   return post;
+// });
 exports.Post = mongoose.model('Post', PostSchema);

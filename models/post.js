@@ -7,6 +7,11 @@ let {Post: PostModel} = require('../libs/mongodb');
 
 module.exports = {
   create: post => PostModel.create(post),
+  updateByPostId: ({postId, title, content}) => {
+    return PostModel
+      .update({_id: postId}, {title: title, content: content})
+      .exec();
+  },
   findByAuthor: author => {
     let query = {};
     if (author) {

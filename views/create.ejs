@@ -54,6 +54,13 @@
     </div>
   </div>
 </div>
+<textarea class="hidden"><%- content %></textarea>
+<script type="application/javascript">
+  var GLOBAL = {
+    _id: '<%= _id %>',
+    title: '<%= title %>'
+  }
+</script>
 <script type="application/javascript" src="/libs/marked/lib/marked.js"></script>
 <script type="application/javascript" src="/libs/ace-builds/src/ace.js"></script>
 <script type="application/javascript" src="/js/create.js"></script>
