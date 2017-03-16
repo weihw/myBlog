@@ -12,10 +12,10 @@ module.exports = {
       .update({_id: postId}, {title: title, content: content})
       .exec();
   },
-  findByAuthor: author => {
+  findByAuthorId: authorId => {
     let query = {};
-    if (author) {
-      query.author = author;
+    if (authorId) {
+      query.author = authorId;
     }
     return PostModel
       .find(query)

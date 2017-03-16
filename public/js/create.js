@@ -10,8 +10,8 @@ let Edit = (function () {
     bold: '**?**',
     italic: '*?*',
     strikethrough: '~~?~~',
-    underline: '<font style="text-decoration: underline"></font>',
-    color: '<font color="red"></font>',
+    underline: '<font style="text-decoration: underline">?</font>',
+    color: '<font color="red">?</font>',
     quote: '\n> ',
     splitLine: '\n---\n',
     listUl: '\n- \n- ',
@@ -49,7 +49,7 @@ let Edit = (function () {
 
 $(function () {
   $("#mdeditor").keyup(function () {
-    $("#preview").html(marked(Edit.getValue()));
+    $("#preview").html(marked(Edit.getValue().content));
   });
   $('.md-func').click(function () {
     let name = $(this).attr('data-name');
@@ -83,5 +83,5 @@ $(function () {
       ajaxOption.type = 'PUT';
     }
     $.ajax(ajaxOption);
-  })
+  });
 });

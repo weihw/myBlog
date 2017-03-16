@@ -1,9 +1,13 @@
 <ul class="list-unstyled post-list">
   <% postList.forEach(item => { %>
   <li>
-    <a href="/posts/username/<%= item.author.username %>"><img src="/img/<%= item.author.imgURL %>" alt="" class="img-circle "></a>
-    <a class="post" href="/posts/one/<%= item._id %>"><%= item.title %></a>
-    <span class="pull-right"><%= item.createAt %></span>
+    <a class="author" href="/posts/<%= item.author._id %>">
+      <img src="/img/<%= item.author.imgURL %>" title="<%= item.author.username %>" class="img-circle ">
+    </a>
+    <a class="post" href="/posts/one/<%= item._id %>">
+      <span><%= item.title %></span>
+      <span class="pull-right"><%= item.createDate %></span>
+    </a>
   </li>
   <% }) %>
 </ul>

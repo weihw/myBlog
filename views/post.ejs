@@ -4,7 +4,7 @@
     <div class="topic-title">
       <h3><%= topic.title %></h3>
       <small>作者：<%= topic.author.username %></small>
-      <small>发文日期：<%= topic.createAt %></small>
+      <small>发文日期：<%= topic.createDate %></small>
       <% if(user._id == topic.author._id) {%>
       <a class="pull-right" href="/posts/creation/<%= topic._id %>">编辑</a>
       <% } %>

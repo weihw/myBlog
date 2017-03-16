@@ -19,9 +19,11 @@ body {
 .post-list > li {
   background-color: white;
   vertical-align: middle;
-  background-color: white;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   border-bottom: 1px solid #f0f0f0;
+  position: relative;
+  height: 4rem;
+  line-height: 4rem;
 }
 
 .post-list > li:hover {
@@ -33,11 +35,21 @@ body {
   height: 3rem;
   vertical-align: middle;
 }
+.post-list .author {
+  display: inline-block;
+  vertical-align: middle;
+  color: #778087;
+  text-decoration: none;
+  position: absolute;
+  z-index: 10;
+}
 
 .post-list .post {
   vertical-align: middle;
-  padding-left: 3rem;
+  padding-left: 4rem;
   color: black;
+  position: relative;
+  display: block;
 }
 
 .post-list .post:hover {

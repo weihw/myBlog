@@ -11,7 +11,15 @@ let Post = require('../models/post');
 
 // 获取文章列表
 router.get('/', function (req, res) {
-  Post.findByAuthor().then(posts => {
+  Post.findByAuthorId().then(posts => {
+    res.render('index', {postList: posts});
+  }).catch(err => {
+    res.send({success: 0, msg: "系统异常，请重试。"});
+  });
+});
+router.get('/:userId', function (req, res) {
+  console.log(`userId: ${req.params.username}`);
+  Post.findByAuthorId(req.params.username).then(posts => {
     res.render('index', {postList: posts});
   }).catch(err => {
     res.send({success: 0, msg: "系统异常，请重试。"});
@@ -68,12 +76,7 @@ router.get('/one/:postId', function (req, res) {
   Post
     .findByPostId(req.params.postId)
     .then(post => {
-      // post.createAt = moment(post.createAt).format('YYYY-MM-DD');
-      post.createAt = '123123123';
-      // console.log(`router:${moment(post.createAt).format('YYYY-MM-DD')}`);
-      console.log(`router:${post.createAt}`);
       post.content = marked(post.content);
-      console.log(`router:${post.content}`);
       res.render('post', {topic: post})
     })
     .catch(err => res.redirect('/'));

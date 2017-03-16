@@ -6,7 +6,7 @@
 let config = require('config-lite');
 let mongoose = require('mongoose');
 let bluebird = require('bluebird');
-// let moment = require('moment');
+let moment = require('moment');
 // let marked = require('marked');
 let Schema = mongoose.Schema;
 mongoose.Promise = global.Promise = bluebird;
@@ -32,7 +32,8 @@ let PostSchema = new Schema({
   title: {type: String, required: true},
   content: {type: String},
   pv: {type: Number},
-  createAt: {type: Date, default: new Date()}
+  createAt: {type: Date, default: new Date()},
+  createDate: {type: String, default: moment().format("YYYY-MM-DD")}
 });
 
 // 将schema的 createAt 从 Date() 转换成 YYYY-MM-DD
